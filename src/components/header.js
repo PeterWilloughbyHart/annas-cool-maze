@@ -5,7 +5,7 @@ export default function Header(props) {
     <header>
       <h2>Maze Creator</h2>
       <nav>
-        <button onClick={() => props.pageHandler("search")}>Find</button>
+        <button onClick={() => props.pageHandler("find")}>Find</button>
         <button onClick={() => props.pageHandler("create")}>Create</button>
       </nav>
     </header>

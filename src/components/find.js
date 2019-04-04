@@ -12,12 +12,16 @@ export default class Find extends Component {
       edit: false,
       maze: []
     };
+    this.toggleEdit = this.toggleEdit.bind(this);
   }
   componentDidMount() {
     this.props.loadMazes();
   }
   triggerUpdate(element) {
     this.setState({ edit: true, maze: element.maze });
+  }
+  toggleEdit() {
+    this.setState({ edit: false });
   }
 
   render() {
@@ -55,7 +59,7 @@ export default class Find extends Component {
           </div>
         ) : (
           <Update
-            pageHandler={this.props.pageHandler}
+            toggleEdit={this.toggleEdit}
             updateMaze={this.props.updateMaze}
             maze={this.state.maze}
           />

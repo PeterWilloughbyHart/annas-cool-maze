@@ -21,7 +21,7 @@ export default class Update extends Component {
       maze
     };
     this.props.updateMaze(object);
-    this.props.pageHandler("find");
+    this.props.toggleEdit();
   }
   setPiece() {
     // changes a specific spot from the default div to a new one
@@ -43,6 +43,7 @@ export default class Update extends Component {
   }
 
   render() {
+    console.log("HIT");
     return (
       <main id="createMain">
         <TilesDisplayed />

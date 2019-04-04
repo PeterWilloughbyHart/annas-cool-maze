@@ -63,7 +63,7 @@ export default class Body extends Component {
             pageHandler={this.props.pageHandler}
           />
         ) : this.props.page === "update" ? (
-          <Update maze={this.state.maze} />
+          <Update />
         ) : this.props.page === "play" ? (
           <Play maze={this.state.maze} />
         ) : (
