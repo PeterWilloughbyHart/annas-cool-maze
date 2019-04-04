@@ -40,7 +40,7 @@ export default class Body extends Component {
           />
         ) : this.props.page === "create" ? (
           <Create
-            addMazes={this.addMazes}
+            addMaze={this.addMaze}
             page={this.props.page}
             mazes={this.state.mazes}
           />

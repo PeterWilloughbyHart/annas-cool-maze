@@ -31,10 +31,8 @@ export default class Search extends Component {
           <input onChange={e => this.setState({ collums: e.target.value })} />
         </div>
         <button onClick={this.searchMazes()}>Search</button>
-        {this.props.mazes.map(element => {
-          let key = 0;
-          key++;
-          return <Grid key={key} maze={element.maze} />;
+        {this.props.mazes.map((element, index) => {
+          return <Grid key={index} maze={element.maze} />;
         })}
       </div>
     );

@@ -9,7 +9,6 @@ let mazes = [
     maze: [
       [
         {
-          key: 1,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -18,7 +17,6 @@ let mazes = [
           show: ""
         },
         {
-          key: 2,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -27,7 +25,6 @@ let mazes = [
           show: ""
         },
         {
-          key: 3,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -38,7 +35,6 @@ let mazes = [
       ],
       [
         {
-          key: 4,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -47,7 +43,6 @@ let mazes = [
           show: ""
         },
         {
-          key: 5,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -56,7 +51,6 @@ let mazes = [
           show: ""
         },
         {
-          key: 6,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -67,7 +61,6 @@ let mazes = [
       ],
       [
         {
-          key: 7,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -76,7 +69,6 @@ let mazes = [
           show: ""
         },
         {
-          key: 8,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -85,7 +77,6 @@ let mazes = [
           show: ""
         },
         {
-          key: 9,
           nWall: false,
           eWall: false,
           sWall: false,

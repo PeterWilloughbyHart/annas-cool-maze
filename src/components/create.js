@@ -12,9 +12,11 @@ export default class Create extends Component {
       maze: [],
       row: 0,
       column: 0,
-      tile: ""
+      tile: "",
+      key: 0
     };
     this.makeGrid = this.makeGrid.bind(this);
+    this.createMazeObject = this.createMazeObject.bind(this);
   }
 
   setPiece() {
@@ -28,14 +30,13 @@ export default class Create extends Component {
 
   makeGrid() {
     //makes a maze based on rows and columns put in with default tiles
-    let { maze } = this.state;
-    let key = 1;
+    let { maze, key } = this.state;
     for (let i = 0; i < this.state.rows; i++) {
       let row = [];
       for (let j = 0; j < this.state.columns; j++) {
         row.push({
           // wall values will be important in the play componenet later if I have time
-          key,
+          key: key,
           nWall: false,
           eWall: false,
           sWall: false,
@@ -43,14 +44,16 @@ export default class Create extends Component {
           tile: "tile",
           show: "?"
         });
-        key++;
       }
       maze.push(row);
+      key++;
+      this.setState({ key: key });
     }
 
     this.setState({ maze });
   }
   createMazeObject() {
+    // creates an object to send in .post
     let { name, rows, columns, maze } = this.state;
     let object = {
       name,
@@ -105,8 +108,8 @@ export default class Create extends Component {
             />
             <button onClick={() => this.setPiece()}>Set</button>
           </div>
+          <button onClick={() => this.createMazeObject()}>Publish</button>
         </div>
-        <button onClick={() => this.createMazeObject()}>Publish</button>
       </main>
     );
   }
