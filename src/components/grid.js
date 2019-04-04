@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 
+//displays the maze
 export default class Grid extends Component {
   render() {
     let display = this.props.maze.map((element, index) => {
       return (
-        <div class="row">
-          {element.map(element => {
-            return <div class="tile">?</div>;
+        <div key={index} className="row">
+          {element.map((element2, index2) => {
+            return (
+              <div key={index2} className={element2.tile}>
+                {element2.show}
+              </div>
+            );
           })}
         </div>
       );

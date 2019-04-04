@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Grid from "./grid";
 
 export default class Search extends Component {
   constructor(props) {
@@ -9,6 +10,10 @@ export default class Search extends Component {
       columns: 0
     };
   }
+  componentDidMount() {
+    this.props.loadMazes();
+  }
+
   searchMazes() {}
   render() {
     return (
@@ -26,6 +31,11 @@ export default class Search extends Component {
           <input onChange={e => this.setState({ collums: e.target.value })} />
         </div>
         <button onClick={this.searchMazes()}>Search</button>
+        {this.props.mazes.map(element => {
+          let key = 0;
+          key++;
+          return <Grid key={key} maze={element.maze} />;
+        })}
       </div>
     );
   }

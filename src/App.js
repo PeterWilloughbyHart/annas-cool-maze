@@ -7,7 +7,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "create"
+      //page controlls the conditional rendering in the Body component
+      page: "search"
     };
     this.pageHandler = this.pageHandler.bind(this);
   }

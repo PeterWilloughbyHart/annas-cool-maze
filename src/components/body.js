@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Search from "./search";
 import Create from "./create";
 import Play from "./play";
+import axios from "axios";
 
 export default class Body extends Component {
   constructor(props) {
@@ -9,20 +10,46 @@ export default class Body extends Component {
     this.state = {
       mazes: []
     };
+    this.loadMazes = this.loadMazes.bind(this);
+    this.addMaze = this.addMaze.bind(this);
+  }
+  loadMazes() {
+    axios
+      .get("/api/mazes")
+      .then(res => {
+        this.setState({ mazes: res.data });
+      })
+      .catch(errors => console.log(errors));
+  }
+  addMaze(object) {
+    axios
+      .post("/api/mazes", object)
+      .then(res => this.setState({ mazes: res.data }))
+      .catch(errors => console.log(errors));
   }
   render() {
     return (
-      <body>
+      <div>
+        {/* conditionally renders the body of the page.
+        I passed in page for anticipated future use in play component  */}
         {this.props.page === "search" ? (
-          <Search page={this.props.page} mazes={this.state.mazes} />
+          <Search
+            loadMazes={this.loadMazes}
+            page={this.props.page}
+            mazes={this.state.mazes}
+          />
         ) : this.props.page === "create" ? (
-          <Create page={this.props.page} mazes={this.state.mazes} />
+          <Create
+            addMazes={this.addMazes}
+            page={this.props.page}
+            mazes={this.state.mazes}
+          />
         ) : this.props.page === "play" ? (
           <Play />
         ) : (
           <p>Error! I'm broke</p>
         )}
-      </body>
+      </div>
     );
   }
 }

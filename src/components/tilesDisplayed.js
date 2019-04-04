@@ -1,63 +1,63 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default function TilesDisplayed() {
   return (
-    <div class="exampleBox">
+    <div className="exampleBox">
       <div>
-        <lable>1</lable>
-        <div class="tile_1" />
+        <p>1</p>
+        <div className="tile_1" />
       </div>
       <div>
-        <lable>2</lable>
-        <div class="tile_2" />
+        <p>2</p>
+        <div className="tile_2" />
       </div>
       <div>
-        <lable>3</lable>
-        <div class="tile_3" />
+        <p>3</p>
+        <div className="tile_3" />
       </div>
       <div>
-        <lable>4</lable>
-        <div class="tile_4" />
+        <p>4</p>
+        <div className="tile_4" />
       </div>
       <div>
-        <lable>5</lable>
-        <div class="tile_5" />
+        <p>5</p>
+        <div className="tile_5" />
       </div>
       <div>
-        <lable>6</lable>
-        <div class="tile_6" />
+        <p>6</p>
+        <div className="tile_6" />
       </div>
       <div>
-        <lable>7</lable>
-        <div class="tile_7" />
+        <p>7</p>
+        <div className="tile_7" />
       </div>
       <div>
-        <lable>8</lable>
-        <div class="tile_8" />
+        <p>8</p>
+        <div className="tile_8" />
       </div>
       <div>
-        <lable>9</lable>
-        <div class="tile_9" />
+        <p>9</p>
+        <div className="tile_9" />
       </div>
       <div>
-        <lable>10</lable>
-        <div class="tile_10" />
+        <p>10</p>
+        <div className="tile_10" />
       </div>
       <div>
-        <lable>11</lable>
-        <div class="tile_11" />
+        <p>11</p>
+        <div className="tile_11" />
       </div>
       <div>
-        <lable>12</lable>
-        <div class="tile_12" />
+        <p>12</p>
+        <div className="tile_12" />
       </div>
       <div>
-        <lable>13</lable>
-        <div class="tile_13" />
+        <p>13</p>
+        <div className="tile_13" />
       </div>
       <div>
-        <lable>14</lable>
-        <div class="tile_14" />
+        <p>14</p>
+        <div className="tile_14" />
       </div>
     </div>
   );
