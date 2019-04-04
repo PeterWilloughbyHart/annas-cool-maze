@@ -7,7 +7,6 @@ export default function Header(props) {
       <nav>
         <button onClick={() => props.pageHandler("search")}>Find</button>
         <button onClick={() => props.pageHandler("create")}>Create</button>
-        {/* <button onClick={() => props.pageHandler("play")}>Play</button> */}
       </nav>
     </header>
   );

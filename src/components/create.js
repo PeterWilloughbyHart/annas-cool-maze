@@ -22,35 +22,53 @@ export default class Create extends Component {
   setPiece() {
     // changes a specific spot from the default div to a new one
     let { maze, column, row, tile } = this.state;
-    maze[row - 1][column - 1].tile = "tile_" + tile;
-    maze[row - 1][column - 1].show = "";
-    this.setState({ maze });
-    console.log(maze);
+    if (
+      row > 0 &&
+      row < maze.length &&
+      column > 0 &&
+      column < maze[row - 1].length &&
+      tile > 0 &&
+      tile <= 14
+    ) {
+      maze[row - 1][column - 1].tile = "tile_" + tile;
+      maze[row - 1][column - 1].show = "";
+      this.setState({ maze });
+    } else {
+      alert("Not a valid position or tile");
+    }
   }
 
   makeGrid() {
     //makes a maze based on rows and columns put in with default tiles
-    let { maze, key } = this.state;
-    for (let i = 0; i < this.state.rows; i++) {
-      let row = [];
-      for (let j = 0; j < this.state.columns; j++) {
-        row.push({
-          // wall values will be important in the play componenet later if I have time
-          key: key,
-          nWall: false,
-          eWall: false,
-          sWall: false,
-          wWall: false,
-          tile: "tile",
-          show: "?"
-        });
-      }
-      maze.push(row);
-      key++;
-      this.setState({ key: key });
-    }
+    let { maze, key, rows, columns, name } = this.state;
+    if (!name) {
+      alert("Please enter a name for your maze");
+    } else {
+      if (rows > 0 && rows < 15 && columns > 0 && columns < 15) {
+        for (let i = 0; i < rows; i++) {
+          let row = [];
+          for (let j = 0; j < columns; j++) {
+            row.push({
+              // wall values will be important in the play componenet later if I have time
+              key: key,
+              nWall: false,
+              eWall: false,
+              sWall: false,
+              wWall: false,
+              tile: "tile",
+              show: "?"
+            });
+          }
+          maze.push(row);
+          key++;
+          this.setState({ key: key });
+        }
 
-    this.setState({ maze });
+        this.setState({ maze });
+      } else {
+        alert("Invalid rows or columns number");
+      }
+    }
   }
   createMazeObject() {
     // creates an object to send in .post
@@ -62,6 +80,7 @@ export default class Create extends Component {
       maze
     };
     this.props.addMaze(object);
+    this.props.pageHandler("find");
   }
 
   render() {
@@ -81,10 +100,12 @@ export default class Create extends Component {
               />
               <input
                 placeholder="rows"
+                type="number"
                 onChange={event => this.setState({ rows: event.target.value })}
               />
               <input
                 placeholder="columns"
+                type="number"
                 onChange={event =>
                   this.setState({ columns: event.target.value })
                 }

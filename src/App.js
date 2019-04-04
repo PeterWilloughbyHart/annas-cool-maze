@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       //page controlls the conditional rendering in the Body component
-      page: "search"
+      page: "find"
     };
     this.pageHandler = this.pageHandler.bind(this);
   }
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header pageHandler={this.pageHandler} />
-        <Body page={this.state.page} />
+        <Body page={this.state.page} pageHandler={this.pageHandler} />
       </div>
     );
   }
