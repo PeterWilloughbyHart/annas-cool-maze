@@ -34,6 +34,9 @@ header {
   flex-direction: column;
 }
 .tile_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid black;
   border-left: 2px solid black;
   height: 48px;
@@ -41,6 +44,9 @@ header {
   background: white;
 }
 .tile_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-bottom: 2px solid black;
   border-right: 2px solid black;
   height: 48px;
@@ -48,6 +54,9 @@ header {
   background: white;
 }
 .tile_3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   height: 48px;
@@ -55,6 +64,9 @@ header {
   background: white;
 }
 .tile_4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid black;
   border-right: 2px solid black;
   height: 48px;
@@ -62,6 +74,9 @@ header {
   background: white;
 }
 .tile_5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-bottom: 2px solid black;
   border-right: 2px solid black;
   border-left: 2px solid black;
@@ -70,6 +85,9 @@ header {
   background: white;
 }
 .tile_6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid black;
   border-right: 2px solid black;
   border-left: 2px solid black;
@@ -78,6 +96,9 @@ header {
   background: white;
 }
 .tile_7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
@@ -86,6 +107,9 @@ header {
   background: white;
 }
 .tile_8 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   border-right: 2px solid black;
@@ -94,6 +118,9 @@ header {
   background: white;
 }
 .tile_9 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   height: 46px;
@@ -101,6 +128,9 @@ header {
   background: white;
 }
 .tile_10 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 2px solid black;
   border-left: 2px solid black;
   height: 50px;
@@ -108,24 +138,36 @@ header {
   background: white;
 }
 .tile_11 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 2px solid black;
   height: 48px;
   width: 50px;
   background: white;
 }
 .tile_12 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-bottom: 2px solid black;
   height: 48px;
   width: 50px;
   background: white;
 }
 .tile_13 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-left: 2px solid black;
   height: 50px;
   width: 48px;
   background: white;
 }
 .tile_14 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 2px solid black;
   height: 50px;
   width: 48px;
@@ -206,4 +248,10 @@ header {
   padding: 5px 15px;
   margin: 3px;
   font-size: 130%;
+}
+#dot {
+  border-radius: 50%;
+  background: red;
+  height: 20px;
+  width: 20px;
 }

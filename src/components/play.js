@@ -6,9 +6,14 @@ export default class Play extends Component {
     super(props);
     this.state = {
       maze: this.props.element.maze,
-      currRow: 1,
-      currColumn: 1
+      row: 1,
+      column: 1
     };
+  }
+  componentDidMount() {
+    let { maze, row, column } = this.state;
+    maze[row - 1][column - 1].show = <div id="dot" />;
+    this.setState({ maze });
   }
   moveMarker(direction) {}
   render() {
