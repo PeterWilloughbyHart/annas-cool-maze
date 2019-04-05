@@ -174,3 +174,36 @@ header {
   padding: 10px 5px;
   margin: 10px;
 }
+.play {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.playBox {
+  /* border: 2px solid red; */
+  width: 70vw;
+  background: rgb(228, 226, 226);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.playButtonBox {
+  /* border: 2px solid red; */
+  height: 15vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5vh;
+}
+.playButton {
+  color: white;
+  background: black;
+  border-radius: 30%;
+  font-weight: bold;
+  padding: 5px 15px;
+  margin: 3px;
+  font-size: 130%;
+}

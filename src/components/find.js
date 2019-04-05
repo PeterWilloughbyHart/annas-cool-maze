@@ -1,30 +1,31 @@
 import React, { Component } from "react";
 import Grid from "./grid";
 import Update from "./update";
+import Play from "./play";
 
 export default class Find extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: false,
+      page2: "find",
       element: {}
     };
-    this.toggleEdit = this.toggleEdit.bind(this);
+    this.togglePage2 = this.togglePage2.bind(this);
   }
   componentDidMount() {
     this.props.loadMazes();
   }
-  triggerUpdate(element) {
-    this.setState({ edit: true, element: element });
+  triggerChange(e, element) {
+    this.setState({ page2: e.target.value, element: element });
   }
-  toggleEdit() {
-    this.setState({ edit: false });
+  togglePage2() {
+    this.setState({ page2: "find" });
   }
 
   render() {
     return (
       <div>
-        {!this.state.edit ? (
+        {this.state.page2 === "find" ? (
           <div className="display">
             {/* <div>
           <label>name:</label>
@@ -44,8 +45,17 @@ export default class Find extends Component {
                 <div key={index}>
                   <Grid maze={element.maze} />
 
-                  <button onClick={() => this.triggerUpdate(element)}>
+                  <button
+                    value={"update"}
+                    onClick={e => this.triggerChange(e, element)}
+                  >
                     Edit
+                  </button>
+                  <button
+                    value={"play"}
+                    onClick={e => this.triggerChange(e, element)}
+                  >
+                    Play
                   </button>
                   <button onClick={() => this.props.deleteMaze(index)}>
                     Delete
@@ -54,13 +64,17 @@ export default class Find extends Component {
               );
             })}
           </div>
-        ) : (
+        ) : this.state.page2 === "update" ? (
           <Update
-            toggleEdit={this.toggleEdit}
+            togglePage2={this.togglePage2}
             updateMaze={this.props.updateMaze}
             element={this.state.element}
             mazes={this.props.mazes}
           />
+        ) : this.state.page2 === "play" ? (
+          <Play element={this.state.element} />
+        ) : (
+          <p>oop! I'm broke again</p>
         )}
       </div>
     );

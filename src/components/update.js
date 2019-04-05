@@ -24,10 +24,10 @@ export default class Update extends Component {
       maze
     };
     let index = this.props.mazes.findIndex(
-      objext => object === this.props.element
+      thing => thing === this.props.element
     );
     this.props.updateMaze(index, object);
-    this.props.toggleEdit();
+    this.props.togglePage2();
   }
   setPiece() {
     // changes a specific spot from the default div to a new one
@@ -40,70 +40,8 @@ export default class Update extends Component {
       tile > 0 &&
       tile <= 14
     ) {
-      switch (+tile) {
-        case 1:
-          maze[row - 1][column - 1].nWall = true;
-          maze[row - 1][column - 1].wWall = true;
-          break;
-        case 2:
-          maze[row - 1][column - 1].eWall = true;
-          maze[row - 1][column - 1].sWall = true;
-          break;
-        case 3:
-          maze[row - 1][column - 1].wWall = true;
-          maze[row - 1][column - 1].sWall = true;
-          break;
-        case 4:
-          maze[row - 1][column - 1].nWall = true;
-          maze[row - 1][column - 1].eWall = true;
-          break;
-        case 5:
-          maze[row - 1][column - 1].eWall = true;
-          maze[row - 1][column - 1].sWall = true;
-          maze[row - 1][column - 1].wWall = true;
-          break;
-        case 6:
-          maze[row - 1][column - 1].eWall = true;
-          maze[row - 1][column - 1].nWall = true;
-          maze[row - 1][column - 1].wWall = true;
-          break;
-        case 7:
-          maze[row - 1][column - 1].nWall = true;
-          maze[row - 1][column - 1].sWall = true;
-          maze[row - 1][column - 1].wWall = true;
-          break;
-        case 8:
-          maze[row - 1][column - 1].eWall = true;
-          maze[row - 1][column - 1].sWall = true;
-          maze[row - 1][column - 1].nWall = true;
-          break;
-        case 9:
-          maze[row - 1][column - 1].nWall = true;
-          maze[row - 1][column - 1].sWall = true;
-          break;
-        case 10:
-          maze[row - 1][column - 1].eWall = true;
-          maze[row - 1][column - 1].wWall = true;
-          break;
-        case 11:
-          maze[row - 1][column - 1].nWall = true;
-          break;
-        case 12:
-          maze[row - 1][column - 1].sWall = true;
-          break;
-        case 13:
-          maze[row - 1][column - 1].wWall = true;
-          break;
-        case 14:
-          maze[row - 1][column - 1].eWall = true;
-          break;
-        default:
-          console.log("nope");
-          break;
-      }
       maze[row - 1][column - 1].tile = "tile_" + tile;
       maze[row - 1][column - 1].show = "";
-      console.log(maze);
       this.setState({ maze });
     } else {
       alert("Not a valid position or tile");
@@ -115,10 +53,9 @@ export default class Update extends Component {
       <main id="createMain">
         <TilesDisplayed />
         <div className="createBox">
-          {
-            // Grid displays the maze passed in
-            <Grid maze={this.props.element.maze} />
-          }
+          {/* Grid displays the maze passed in */}
+          <Grid maze={this.props.element.maze} />
+
           {/* input feilds to control what tile goes where */}
           <div>
             <input
