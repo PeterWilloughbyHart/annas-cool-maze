@@ -6,11 +6,8 @@ export default class Find extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // name: "",
-      // rows: 0,
-      // columns: 0,
       edit: false,
-      maze: []
+      element: {}
     };
     this.toggleEdit = this.toggleEdit.bind(this);
   }
@@ -18,7 +15,7 @@ export default class Find extends Component {
     this.props.loadMazes();
   }
   triggerUpdate(element) {
-    this.setState({ edit: true, maze: element.maze });
+    this.setState({ edit: true, element: element });
   }
   toggleEdit() {
     this.setState({ edit: false });
@@ -28,7 +25,7 @@ export default class Find extends Component {
     return (
       <div>
         {!this.state.edit ? (
-          <div>
+          <div className="display">
             {/* <div>
           <label>name:</label>
           <input onChange={e => this.setState({ name: e.target.value })} />
@@ -61,7 +58,8 @@ export default class Find extends Component {
           <Update
             toggleEdit={this.toggleEdit}
             updateMaze={this.props.updateMaze}
-            maze={this.state.maze}
+            element={this.state.element}
+            mazes={this.props.mazes}
           />
         )}
       </div>

@@ -6,7 +6,7 @@ const getMazes = (req, res) => {
   res.status(200).json(mazes);
 };
 const addMaze = (req, res) => {
-  mazes.unshift(req.body);
+  mazes.push(req.body);
   res.status(200).json(mazes);
 };
 const deleteMaze = (req, res) => {

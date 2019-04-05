@@ -1,7 +1,21 @@
+.App {
+  background-image: url("https://www.publicdomainpictures.net/pictures/160000/velka/the-maze.jpg");
+}
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background: black;
+  color: white;
+  font-size: 300%;
+  height: 15vh;
+}
+.navButton {
+  border-radius: 50%;
+  font-size: 50%;
+  margin: 10px 25px;
+  padding: 15px 30px;
+  font-weight: bold;
 }
 .row {
   display: flex;
@@ -12,6 +26,8 @@ header {
   width: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background: rgb(228, 226, 226);
 }
 #display_box {
   display: flex;
@@ -119,7 +135,7 @@ header {
   margin-left: 50px;
   width: 140px;
   height: 730px;
-  background: lightblue;
+  background: rgb(228, 226, 226);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -129,4 +145,32 @@ header {
 #createMain {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+.createBox {
+  /* border: 2px solid red; */
+  width: 70vw;
+  background: rgb(228, 226, 226);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.display {
+  /* border: 2px solid red; */
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  height: 85vh;
+}
+.createBox button {
+  color: white;
+  background: black;
+  border-radius: 30%;
+  font-weight: bold;
+  padding: 10px 5px;
+  margin: 10px;
 }

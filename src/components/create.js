@@ -24,9 +24,9 @@ export default class Create extends Component {
     let { maze, column, row, tile } = this.state;
     if (
       row > 0 &&
-      row < maze.length &&
+      row <= maze.length &&
       column > 0 &&
-      column < maze[row - 1].length &&
+      column <= maze[row - 1].length &&
       tile > 0 &&
       tile <= 14
     ) {
@@ -44,7 +44,7 @@ export default class Create extends Component {
     if (!name) {
       alert("Please enter a name for your maze");
     } else {
-      if (rows > 0 && rows < 15 && columns > 0 && columns < 15) {
+      if (rows > 0 && rows <= 15 && columns > 0 && columns <= 15) {
         for (let i = 0; i < rows; i++) {
           let row = [];
           for (let j = 0; j < columns; j++) {
@@ -82,18 +82,22 @@ export default class Create extends Component {
     this.props.addMaze(object);
     this.props.pageHandler("find");
   }
+  resetGrid() {
+    this.setState({ maze: [] });
+  }
 
   render() {
     return (
       <main id="createMain">
         <TilesDisplayed />
-        <div>
+        <div className="createBox">
           {this.state.maze[0] ? (
             // Grid displays the maze passed in
             <Grid maze={this.state.maze} />
           ) : (
             <div>
               {/* criteria for maze size is entered */}
+              <p>>here is a max of a 15/15 maze</p>
               <input
                 placeholder="name"
                 onChange={event => this.setState({ name: event.target.value })}
@@ -129,7 +133,10 @@ export default class Create extends Component {
             />
             <button onClick={() => this.setPiece()}>Set</button>
           </div>
-          <button onClick={() => this.createMazeObject()}>Publish</button>
+          <div>
+            <button onClick={() => this.createMazeObject()}>Publish</button>
+            <button onClick={() => this.resetGrid()}>Reset</button>
+          </div>
         </div>
       </main>
     );

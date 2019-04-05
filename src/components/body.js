@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Find from "./find";
 import Create from "./create";
-import Play from "./play";
-import Update from "./update";
+// import Play from "./play";
 import axios from "axios";
 
 export default class Body extends Component {
@@ -15,6 +14,7 @@ export default class Body extends Component {
     this.loadMazes = this.loadMazes.bind(this);
     this.addMaze = this.addMaze.bind(this);
     this.deleteMaze = this.deleteMaze.bind(this);
+    this.updateMaze = this.updateMaze.bind(this);
   }
   loadMazes() {
     axios
@@ -46,8 +46,7 @@ export default class Body extends Component {
   render() {
     return (
       <div>
-        {/* conditionally renders the body of the page.
-        I passed in page for anticipated future use in play component  */}
+        {/* conditionally renders the body of the page */}
         {this.props.page === "find" ? (
           <Find
             loadMazes={this.loadMazes}
@@ -62,11 +61,9 @@ export default class Body extends Component {
             mazes={this.state.mazes}
             pageHandler={this.props.pageHandler}
           />
-        ) : this.props.page === "update" ? (
-          <Update />
-        ) : this.props.page === "play" ? (
-          <Play maze={this.state.maze} />
         ) : (
+          // ) : this.props.page === "play" ? (
+          //   <Play maze={this.state.maze} />
           <p>Error! I'm broke</p>
         )}
       </div>

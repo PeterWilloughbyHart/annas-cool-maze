@@ -6,7 +6,7 @@ export default class Update extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maze: this.props.maze,
+      maze: this.props.element.maze,
       row: 0,
       column: 0,
       tile: ""
@@ -16,11 +16,17 @@ export default class Update extends Component {
   }
   createMazeObject() {
     // creates an object to send in .post
-    let { maze } = this.state;
+    let { name, rows, columns, maze } = this.state;
     let object = {
+      name,
+      rows,
+      columns,
       maze
     };
-    this.props.updateMaze(object);
+    let index = this.props.mazes.findIndex(
+      objext => object === this.props.element
+    );
+    this.props.updateMaze(index, object);
     this.props.toggleEdit();
   }
   setPiece() {
@@ -43,14 +49,13 @@ export default class Update extends Component {
   }
 
   render() {
-    console.log("HIT");
     return (
       <main id="createMain">
         <TilesDisplayed />
-        <div>
+        <div className="createBox">
           {
             // Grid displays the maze passed in
-            <Grid maze={this.props.maze} />
+            <Grid maze={this.props.element.maze} />
           }
           {/* input feilds to control what tile goes where */}
           <div>

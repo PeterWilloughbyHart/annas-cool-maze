@@ -39,7 +39,7 @@ let mazes = [
           eWall: false,
           sWall: false,
           wWall: false,
-          tile: "tile_10",
+          tile: "tile_13",
           show: ""
         },
         {
@@ -47,7 +47,7 @@ let mazes = [
           eWall: false,
           sWall: false,
           wWall: false,
-          tile: "tile_5",
+          tile: "tile_2",
           show: ""
         },
         {
@@ -55,7 +55,7 @@ let mazes = [
           eWall: false,
           sWall: false,
           wWall: false,
-          tile: "tile_10",
+          tile: "tile_14",
           show: ""
         }
       ],
