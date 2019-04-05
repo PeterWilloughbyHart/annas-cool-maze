@@ -9,26 +9,26 @@ let mazes = [
     maze: [
       [
         {
-          nWall: false,
+          nWall: true,
           eWall: false,
           sWall: false,
-          wWall: false,
+          wWall: true,
           tile: "tile_1",
           show: ""
         },
         {
-          nWall: false,
+          nWall: true,
           eWall: false,
-          sWall: false,
-          wWall: false,
+          sWall: true,
+          wWall: true,
           tile: "tile_7",
           show: ""
         },
         {
           nWall: false,
           eWall: false,
-          sWall: false,
-          wWall: false,
+          sWall: true,
+          wWall: true,
           tile: "tile_4",
           show: ""
         }
@@ -38,14 +38,14 @@ let mazes = [
           nWall: false,
           eWall: false,
           sWall: false,
-          wWall: false,
+          wWall: true,
           tile: "tile_13",
           show: ""
         },
         {
           nWall: false,
-          eWall: false,
-          sWall: false,
+          eWall: true,
+          sWall: true,
           wWall: false,
           tile: "tile_2",
           show: ""
@@ -62,24 +62,24 @@ let mazes = [
       [
         {
           nWall: false,
-          eWall: false,
+          eWall: true,
           sWall: false,
           wWall: false,
           tile: "tile_3",
           show: ""
         },
         {
-          nWall: false,
+          nWall: true,
           eWall: false,
-          sWall: false,
+          sWall: true,
           wWall: false,
           tile: "tile_9",
           show: ""
         },
         {
           nWall: false,
-          eWall: false,
-          sWall: false,
+          eWall: true,
+          sWall: true,
           wWall: false,
           tile: "tile_2",
           show: ""
