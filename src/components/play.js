@@ -7,26 +7,36 @@ export default class Play extends Component {
     this.state = {
       maze: this.props.element.maze,
       row: 1,
-      column: 1
+      column: 1,
+      noUpWall: [2, 3, 5, 10, 12, 13, 14, 15],
+      noRightWall: [1, 3, 7, 9, 11, 12, 13, 15],
+      noDownWall: [1, 4, 6, 10, 11, 13, 14, 15],
+      noLeftWall: [2, 4, 8, 9, 11, 12, 14, 15]
     };
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
-    let { maze, row, column, i, colors } = this.state;
-    maze[row - 1][column - 1].show = <div className="dot" />;
+    let { maze } = this.state;
+    maze[0][0].show = <div className="dot" />;
     this.setState({ maze });
   }
+
   moveMarker(direction) {
-    let { maze, row, column, i, colors } = this.state;
+    let {
+      maze,
+      row,
+      column,
+      noDownWall,
+      noLeftWall,
+      noRightWall,
+      noUpWall
+    } = this.state;
     if (
       (direction === "up" && row > 1) ||
       (direction === "left" && column > 1) ||
-      (direction === "down" && row < this.props.element.rows) ||
-      (direction === "right" && column < this.props.element.columns)
+      (direction === "down" && row < this.props.element.rows - 1) ||
+      (direction === "right" && column < this.props.element.columns - 1)
     ) {
-      const noUpWall = [2, 3, 5, 10, 12, 13, 14];
-      const noRightWall = [1, 3, 7, 9, 11, 12, 13];
-      const noDownWall = [1, 4, 6, 10, 11, 13, 14];
-      const noLeftWall = [2, 4, 8, 9, 11, 12, 14];
       let newTile = "";
       let arr1 = maze[row - 1][column - 1].tile.split("");
       let arr2 = [];

@@ -59,6 +59,10 @@ export default function TilesDisplayed() {
         <p>14</p>
         <div className="tile_14" />
       </div>
+      <div>
+        <p>15</p>
+        <div className="tile_15" />
+      </div>
     </div>
   );
 }

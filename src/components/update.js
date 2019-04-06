@@ -9,6 +9,9 @@ export default class Update extends Component {
       maze: this.props.element.maze,
       row: 0,
       column: 0,
+      start: 1,
+      endRow: this.props.element.maze.rows,
+      endColumn: this.props.element.maze.columns,
       tile: ""
     };
     this.createMazeObject = this.createMazeObject.bind(this);
@@ -16,7 +19,7 @@ export default class Update extends Component {
   }
   createMazeObject() {
     // creates an object to send in .post
-    let { name, rows, columns, maze } = this.state;
+    let { name, rows, columns, start, end, maze } = this.state;
     let object = {
       name,
       rows,

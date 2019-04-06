@@ -54,6 +54,7 @@ export default class Body extends Component {
             deleteMaze={this.deleteMaze}
             pageHandler={this.props.pageHandler}
             updateMaze={this.updateMaze}
+            page2={this.props.page2}
           />
         ) : this.props.page === "create" ? (
           <Create
@@ -62,8 +63,6 @@ export default class Body extends Component {
             pageHandler={this.props.pageHandler}
           />
         ) : (
-          // ) : this.props.page === "play" ? (
-          //   <Play maze={this.state.maze} />
           <p>Error! I'm broke</p>
         )}
       </div>

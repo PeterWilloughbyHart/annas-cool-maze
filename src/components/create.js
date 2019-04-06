@@ -60,7 +60,7 @@ export default class Create extends Component {
           this.setState({ key: key });
         }
 
-        this.setState({ maze });
+        this.setState({ maze, endRow: rows, endColumn: columns });
       } else {
         alert("Invalid rows or columns number");
       }
@@ -75,7 +75,6 @@ export default class Create extends Component {
       columns,
       maze
     };
-    console.log(object);
     this.props.addMaze(object);
     this.props.pageHandler("find");
   }
