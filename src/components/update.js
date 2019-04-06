@@ -18,19 +18,20 @@ export default class Update extends Component {
     this.setPiece = this.setPiece.bind(this);
   }
   createMazeObject() {
+    debugger;
     // creates an object to send in .post
-    let { name, rows, columns, start, end, maze } = this.state;
+    let { maze } = this.state;
     let object = {
-      name,
-      rows,
-      columns,
+      name: this.props.element.name,
+      rows: this.props.element.rows,
+      columns: this.props.element.columns,
       maze
     };
     let index = this.props.mazes.findIndex(
       thing => thing === this.props.element
     );
     this.props.updateMaze(index, object);
-    this.props.togglePage2();
+    this.props.pageHandler("find");
   }
   setPiece() {
     // changes a specific spot from the default div to a new one

@@ -1,46 +1,21 @@
 import React, { Component } from "react";
 import Find from "./find";
 import Create from "./create";
-// import Play from "./play";
-import axios from "axios";
+import Play from "./play";
+import Update from "./update";
 
 export default class Body extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mazes: [],
-      maze: []
+      element: {}
     };
-    this.loadMazes = this.loadMazes.bind(this);
-    this.addMaze = this.addMaze.bind(this);
-    this.deleteMaze = this.deleteMaze.bind(this);
-    this.updateMaze = this.updateMaze.bind(this);
+
+    this.saveMazeClicked = this.saveMazeClicked.bind(this);
   }
-  loadMazes() {
-    axios
-      .get("/api/mazes")
-      .then(res => {
-        this.setState({ mazes: res.data });
-      })
-      .catch(errors => console.log(errors));
-  }
-  addMaze(object) {
-    axios
-      .post("/api/mazes", object)
-      .then(res => this.setState({ mazes: res.data }))
-      .catch(errors => console.log(errors));
-  }
-  deleteMaze(index) {
-    axios
-      .delete("/api/mazes/" + index)
-      .then(res => this.setState({ mazes: res.data }))
-      .catch(errors => console.log(errors));
-  }
-  updateMaze(index, object) {
-    axios
-      .put("/api/mazes/" + index, object)
-      .then(res => this.setState({ mazes: res.data }))
-      .catch(errors => console.log(errors));
+
+  saveMazeClicked(element) {
+    this.setState({ element });
   }
 
   render() {
@@ -49,19 +24,29 @@ export default class Body extends Component {
         {/* conditionally renders the body of the page */}
         {this.props.page === "find" ? (
           <Find
-            loadMazes={this.loadMazes}
-            mazes={this.state.mazes}
-            deleteMaze={this.deleteMaze}
+            loadMazes={this.props.loadMazes}
+            mazes={this.props.mazes}
+            deleteMaze={this.props.deleteMaze}
             pageHandler={this.props.pageHandler}
-            updateMaze={this.updateMaze}
-            page2={this.props.page2}
+            updateMaze={this.props.updateMaze}
+            saveMazeClicked={this.saveMazeClicked}
+            searchMazes={this.props.searchMazes}
           />
         ) : this.props.page === "create" ? (
           <Create
-            addMaze={this.addMaze}
-            mazes={this.state.mazes}
+            addMaze={this.props.addMaze}
+            mazes={this.props.mazes}
             pageHandler={this.props.pageHandler}
           />
+        ) : this.props.page === "update" ? (
+          <Update
+            updateMaze={this.props.updateMaze}
+            pageHandler={this.props.pageHandler}
+            element={this.state.element}
+            mazes={this.props.mazes}
+          />
+        ) : this.props.page === "play" ? (
+          <Play element={this.state.element} />
         ) : (
           <p>Error! I'm broke</p>
         )}

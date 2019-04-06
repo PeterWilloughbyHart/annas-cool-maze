@@ -14,7 +14,9 @@ export default class Play extends Component {
       noLeftWall: [2, 4, 8, 9, 11, 12, 14, 15]
     };
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.moveMarker = this.moveMarker.bind(this);
   }
+
   componentDidMount() {
     let { maze } = this.state;
     maze[0][0].show = <div className="dot" />;
@@ -31,6 +33,7 @@ export default class Play extends Component {
       noRightWall,
       noUpWall
     } = this.state;
+
     if (
       (direction === "up" && row > 1) ||
       (direction === "left" && column > 1) ||
@@ -127,6 +130,7 @@ export default class Play extends Component {
       return;
     }
   }
+
   render() {
     return (
       <div className="play">
