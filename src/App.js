@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       //page controlls the conditional rendering in the Body component
-      page: "find",
+      page: "home",
       mazes: []
     };
     this.pageHandler = this.pageHandler.bind(this);
@@ -52,7 +52,10 @@ class App extends Component {
   searchMazes(name) {
     axios
       .get("/api/mazes/" + name)
-      .then(res => this.setState({ mazes: res.data }))
+      .then(res => {
+        this.pageHandler("home");
+        this.setState({ mazes: res.data });
+      })
       .catch(errors => console.log(errors));
   }
   componentDidMount() {
@@ -61,11 +64,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header pageHandler={this.pageHandler} searchMazes={this.searchMazes} />
+        <Header
+          pageHandler={this.pageHandler}
+          searchMazes={this.searchMazes}
+          page={this.state.page}
+        />
         <Body
           page={this.state.page}
           pageHandler={this.pageHandler}
           mazes={this.state.mazes}
+          addMaze={this.addMaze}
+          updateMaze={this.addMaze}
+          deleteMaze={this.deleteMaze}
+          loadMazes={this.loadMazes}
         />
       </div>
     );

@@ -19,7 +19,6 @@ const updateMaze = (req, res) => {
 };
 const searchMazes = (req, res) => {
   let newMazes = mazes.filter(element => element.name === req.params.name);
-
   res.status(200).json(newMazes);
 };
 

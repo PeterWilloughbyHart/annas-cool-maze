@@ -76,7 +76,7 @@ export default class Create extends Component {
       maze
     };
     this.props.addMaze(object);
-    this.props.pageHandler("find");
+    this.props.pageHandler("home");
   }
   resetGrid() {
     this.setState({ maze: [] });

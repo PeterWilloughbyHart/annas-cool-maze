@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Find from "./find";
+import Home from "./home";
 import Create from "./create";
 import Play from "./play";
 import Update from "./update";
@@ -22,15 +22,13 @@ export default class Body extends Component {
     return (
       <div>
         {/* conditionally renders the body of the page */}
-        {this.props.page === "find" ? (
-          <Find
-            loadMazes={this.props.loadMazes}
+        {this.props.page === "home" ? (
+          <Home
             mazes={this.props.mazes}
             deleteMaze={this.props.deleteMaze}
             pageHandler={this.props.pageHandler}
             updateMaze={this.props.updateMaze}
             saveMazeClicked={this.saveMazeClicked}
-            searchMazes={this.props.searchMazes}
           />
         ) : this.props.page === "create" ? (
           <Create
@@ -46,7 +44,10 @@ export default class Body extends Component {
             mazes={this.props.mazes}
           />
         ) : this.props.page === "play" ? (
-          <Play element={this.state.element} />
+          <Play
+            element={this.state.element}
+            pageHandler={this.props.pageHandler}
+          />
         ) : (
           <p>Error! I'm broke</p>
         )}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from "./grid";
 
-export default class Find extends Component {
+export default class Home extends Component {
   triggerChange(e, element) {
     this.props.saveMazeClicked(element);
     this.props.pageHandler(e.target.value);

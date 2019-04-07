@@ -130,6 +130,12 @@ export default class Play extends Component {
       return;
     }
   }
+  exitPlay() {
+    let { maze, row, column } = this.state;
+    maze[row - 1][column - 1].show = "";
+    this.setState({ maze });
+    this.props.pageHandler("home");
+  }
 
   render() {
     return (
@@ -166,6 +172,9 @@ export default class Play extends Component {
               onClick={e => this.moveMarker(e.target.value)}
             >
               &darr;
+            </button>
+            <button className="playButton" onClick={() => this.exitPlay()}>
+              Exit
             </button>
           </div>
         </div>

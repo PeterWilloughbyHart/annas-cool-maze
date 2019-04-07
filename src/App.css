@@ -1,6 +1,9 @@
 .App {
   background-image: url("https://www.publicdomainpictures.net/pictures/160000/velka/the-maze.jpg");
+  /* background-size: auto 100%;
+  background-repeat: repeat; */
 }
+
 header {
   display: flex;
   justify-content: space-around;
@@ -216,7 +219,7 @@ header {
   flex-wrap: wrap;
   flex-direction: row;
   align-content: center;
-  height: 85vh;
+  min-height: 85vh;
 }
 .createBox button {
   color: white;

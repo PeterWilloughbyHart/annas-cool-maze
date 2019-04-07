@@ -31,7 +31,7 @@ export default class Update extends Component {
       thing => thing === this.props.element
     );
     this.props.updateMaze(index, object);
-    this.props.pageHandler("find");
+    this.props.pageHandler("home");
   }
   setPiece() {
     // changes a specific spot from the default div to a new one
