@@ -14,7 +14,7 @@ export default class Home extends Component {
           return (
             <div key={index}>
               <div className="mazeContainer">
-                <Grid maze={element.maze} />
+                <Grid maze={element.maze} page={this.props.page} />
               </div>
               <div>
                 <button

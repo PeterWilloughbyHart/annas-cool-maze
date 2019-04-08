@@ -74,7 +74,7 @@ class App extends Component {
           pageHandler={this.pageHandler}
           mazes={this.state.mazes}
           addMaze={this.addMaze}
-          updateMaze={this.addMaze}
+          updateMaze={this.updateMaze}
           deleteMaze={this.deleteMaze}
           loadMazes={this.loadMazes}
         />

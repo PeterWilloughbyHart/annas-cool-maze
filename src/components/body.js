@@ -29,12 +29,14 @@ export default class Body extends Component {
             pageHandler={this.props.pageHandler}
             updateMaze={this.props.updateMaze}
             saveMazeClicked={this.saveMazeClicked}
+            page={this.props.page}
           />
         ) : this.props.page === "create" ? (
           <Create
             addMaze={this.props.addMaze}
             mazes={this.props.mazes}
             pageHandler={this.props.pageHandler}
+            page={this.props.page}
           />
         ) : this.props.page === "update" ? (
           <Update
@@ -42,11 +44,13 @@ export default class Body extends Component {
             pageHandler={this.props.pageHandler}
             element={this.state.element}
             mazes={this.props.mazes}
+            page={this.props.page}
           />
         ) : this.props.page === "play" ? (
           <Play
             element={this.state.element}
             pageHandler={this.props.pageHandler}
+            page={this.props.page}
           />
         ) : (
           <p>Error! I'm broke</p>

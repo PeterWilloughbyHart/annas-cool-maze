@@ -18,7 +18,9 @@ const updateMaze = (req, res) => {
   res.status(200).json(mazes);
 };
 const searchMazes = (req, res) => {
-  let newMazes = mazes.filter(element => element.name === req.params.name);
+  let newMazes = mazes.filter(
+    element => element.name.toLowerCase() === req.params.name.toLowerCase()
+  );
   res.status(200).json(newMazes);
 };
 

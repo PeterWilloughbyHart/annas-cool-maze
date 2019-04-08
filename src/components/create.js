@@ -10,32 +10,24 @@ export default class Create extends Component {
       rows: 0,
       columns: 0,
       maze: [],
-      row: 0,
-      column: 0,
       tile: "",
       key: 0
     };
     this.makeGrid = this.makeGrid.bind(this);
     this.createMazeObject = this.createMazeObject.bind(this);
+    this.setPiece = this.setPiece.bind(this);
+    this.selectPiece = this.selectPiece.bind(this);
+  }
+  selectPiece(className) {
+    this.setState({ tile: className });
   }
 
-  setPiece() {
+  setPiece(row, column) {
     // changes a specific spot from the default div to a new one
-    let { maze, column, row, tile } = this.state;
-    if (
-      row > 0 &&
-      row <= maze.length &&
-      column > 0 &&
-      column <= maze[row - 1].length &&
-      tile > 0 &&
-      tile <= 14
-    ) {
-      maze[row - 1][column - 1].tile = "tile_" + tile;
-      maze[row - 1][column - 1].show = "";
-      this.setState({ maze });
-    } else {
-      alert("Not a valid position or tile");
-    }
+    let { maze, tile } = this.state;
+    maze[row][column].tile = tile;
+    maze[row][column].show = "";
+    this.setState({ maze });
   }
 
   makeGrid() {
@@ -85,15 +77,24 @@ export default class Create extends Component {
   render() {
     return (
       <main id="createMain">
-        <TilesDisplayed />
+        <TilesDisplayed selectPiece={this.selectPiece} />
         <div className="createBox">
           {this.state.maze[0] ? (
             // Grid displays the maze passed in
-            <Grid maze={this.state.maze} />
+            <Grid
+              maze={this.state.maze}
+              setPiece={this.setPiece}
+              page={this.props.page}
+            />
           ) : (
             <div>
               {/* criteria for maze size is entered */}
               <p>There is a max of a 15/15 maze</p>
+              <p>All maezs start in the top left corner for now</p>
+              <p>
+                Leave an opening somewhere in the outerwall of your maze to be
+                your finish
+              </p>
               <input
                 placeholder="name"
                 onChange={event => this.setState({ name: event.target.value })}
@@ -113,22 +114,6 @@ export default class Create extends Component {
               <button onClick={() => this.makeGrid()}>Make Grid</button>
             </div>
           )}
-          {/* input feilds to control what tile goes where */}
-          <div>
-            <input
-              placeholder="tile number"
-              onChange={event => this.setState({ tile: event.target.value })}
-            />
-            <input
-              placeholder="row number"
-              onChange={event => this.setState({ row: event.target.value })}
-            />
-            <input
-              placeholder="column number"
-              onChange={event => this.setState({ column: event.target.value })}
-            />
-            <button onClick={() => this.setPiece()}>Set</button>
-          </div>
           <div>
             <button onClick={() => this.createMazeObject()}>Publish</button>
             <button onClick={() => this.resetGrid()}>Reset</button>

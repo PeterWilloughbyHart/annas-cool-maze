@@ -7,18 +7,15 @@ export default class Update extends Component {
     super(props);
     this.state = {
       maze: this.props.element.maze,
-      row: 0,
-      column: 0,
-      start: 1,
       endRow: this.props.element.maze.rows,
       endColumn: this.props.element.maze.columns,
       tile: ""
     };
     this.createMazeObject = this.createMazeObject.bind(this);
     this.setPiece = this.setPiece.bind(this);
+    this.selectPiece = this.selectPiece.bind(this);
   }
   createMazeObject() {
-    debugger;
     // creates an object to send in .post
     let { maze } = this.state;
     let object = {
@@ -33,49 +30,30 @@ export default class Update extends Component {
     this.props.updateMaze(index, object);
     this.props.pageHandler("home");
   }
-  setPiece() {
+  selectPiece(className) {
+    this.setState({ tile: className });
+  }
+
+  setPiece(row, column) {
     // changes a specific spot from the default div to a new one
-    let { maze, column, row, tile } = this.state;
-    if (
-      row > 0 &&
-      row <= maze.length &&
-      column > 0 &&
-      column <= maze[row - 1].length &&
-      tile > 0 &&
-      tile <= 14
-    ) {
-      maze[row - 1][column - 1].tile = "tile_" + tile;
-      maze[row - 1][column - 1].show = "";
-      this.setState({ maze });
-    } else {
-      alert("Not a valid position or tile");
-    }
+    let { maze, tile } = this.state;
+    maze[row][column].tile = tile;
+    maze[row][column].show = "";
+    this.setState({ maze });
   }
 
   render() {
     return (
       <main id="createMain">
-        <TilesDisplayed />
+        <TilesDisplayed selectPiece={this.selectPiece} />
         <div className="createBox">
           {/* Grid displays the maze passed in */}
-          <Grid maze={this.props.element.maze} />
+          <Grid
+            maze={this.props.element.maze}
+            setPiece={this.setPiece}
+            page={this.props.page}
+          />
 
-          {/* input feilds to control what tile goes where */}
-          <div>
-            <input
-              placeholder="tile number"
-              onChange={event => this.setState({ tile: event.target.value })}
-            />
-            <input
-              placeholder="row number"
-              onChange={event => this.setState({ row: event.target.value })}
-            />
-            <input
-              placeholder="column number"
-              onChange={event => this.setState({ column: event.target.value })}
-            />
-            <button onClick={() => this.setPiece()}>Set</button>
-          </div>
           <button onClick={() => this.createMazeObject()}>Update</button>
         </div>
       </main>

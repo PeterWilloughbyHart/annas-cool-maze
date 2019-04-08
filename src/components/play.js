@@ -15,6 +15,7 @@ export default class Play extends Component {
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.moveMarker = this.moveMarker.bind(this);
+    this.exitPlay = this.exitPlay.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +34,7 @@ export default class Play extends Component {
       noRightWall,
       noUpWall
     } = this.state;
-
+    let currTile = "";
     if (
       (direction === "up" && row > 1) ||
       (direction === "left" && column > 1) ||
@@ -43,7 +44,6 @@ export default class Play extends Component {
       let newTile = "";
       let arr1 = maze[row - 1][column - 1].tile.split("");
       let arr2 = [];
-      let currTile = "";
       let arr3 = [];
       if (arr1[arr1.length - 2] === "_") {
         currTile = arr1.pop();
@@ -126,8 +126,41 @@ export default class Play extends Component {
       } else {
         console.log("I broke in dot moving logic");
       }
-    } else {
-      return;
+    } else if (
+      (direction === "up" && row === 1) ||
+      (direction === "left" && column === 1) ||
+      (direction === "down" && row === this.props.element.rows - 1) ||
+      (direction === "right" && column === this.props.element.columns - 1)
+    ) {
+      let arr1 = maze[row - 1][column - 1].tile.split("");
+      let arr3 = [];
+      if (arr1[arr1.length - 2] === "_") {
+        currTile = arr1.pop();
+      } else {
+        arr3 = arr1.splice(arr1.length - 2, 2);
+        currTile = arr3.join("");
+      }
+      if (direction === "up") {
+        if (noUpWall.includes(+currTile)) {
+          alert("You escaped the maze!");
+          this.exitPlay();
+        }
+      } else if (direction === "down") {
+        if (noDownWall.includes(+currTile)) {
+          alert("You escaped the maze!");
+          this.exitPlay();
+        }
+      } else if (direction === "left") {
+        if (noLeftWall.includes(+currTile)) {
+          alert("You escaped the maze!");
+          this.exitPlay();
+        }
+      } else if (direction === "right") {
+        if (noRightWall.includes(+currTile)) {
+          alert("You escaped the maze!");
+          this.exitPlay();
+        }
+      }
     }
   }
   exitPlay() {
@@ -141,7 +174,7 @@ export default class Play extends Component {
     return (
       <div className="play">
         <div className="playBox">
-          <Grid maze={this.props.element.maze} />
+          <Grid maze={this.props.element.maze} page={this.props.page} />
           <div className="playButtonBox">
             <button
               className="playButton"
