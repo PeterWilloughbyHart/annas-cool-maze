@@ -9,7 +9,7 @@ let mazes = [
     maze: [
       [
         {
-          tile: "tile_3",
+          tile: "tile_7",
           show: ""
         },
         {
@@ -17,7 +17,7 @@ let mazes = [
           show: ""
         },
         {
-          tile: "tile_3",
+          tile: "tile_7",
           show: ""
         },
         {
@@ -47,7 +47,7 @@ let mazes = [
       ],
       [
         {
-          tile: "tile_4",
+          tile: "tile_6",
           show: ""
         },
         {

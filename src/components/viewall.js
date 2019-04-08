@@ -13,7 +13,8 @@ export default class ViewAll extends Component {
           onClick={e => this.props.searchMazes(element.name)}
           className="mazeListItem"
         >
-          {element.name}
+          {element.name + " "}
+          size:{element.rows}/{element.columns}
         </div>
       );
     });

@@ -24,21 +24,29 @@ export default class Play extends Component {
     this.setState({ maze });
     document.addEventListener("keydown", event => this.mapKeyDownEvent(event));
   }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", event =>
+      this.mapKeyDownEvent(event)
+    );
+  }
 
   mapKeyDownEvent(e) {
     let direction;
-    e.preventDefault();
     switch (e.keyCode) {
       case 37:
+        e.preventDefault();
         direction = "left";
         break;
       case 38:
+        e.preventDefault();
         direction = "up";
         break;
       case 39:
+        e.preventDefault();
         direction = "right";
         break;
       case 40:
+        e.preventDefault();
         direction = "down";
         break;
       default:

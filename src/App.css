@@ -195,8 +195,8 @@ header {
 }
 .exampleBox {
   margin-left: 50px;
-  width: 140px;
-  height: 830px;
+  width: 180px;
+  height: 550px;
   background: rgb(190, 174, 233);
   display: flex;
   flex-wrap: wrap;
