@@ -204,13 +204,14 @@ header {
   flex-direction: row;
   align-content: center;
 }
+
 #createMain {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  min-height: 85vh;
 }
 .createBox {
-  /* border: 2px solid red; */
   width: 70vw;
   background: rgb(156, 155, 155);
   display: flex;
