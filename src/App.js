@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       //page controlls the conditional rendering in the Body component
-      page: "home",
+      page: "create",
       mazes: []
     };
     this.pageHandler = this.pageHandler.bind(this);

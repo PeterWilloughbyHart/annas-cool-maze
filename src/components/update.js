@@ -28,7 +28,7 @@ export default class Update extends Component {
       thing => thing === this.props.element
     );
     this.props.updateMaze(index, object);
-    this.props.pageHandler("home");
+    this.props.pageHandler("viewAll");
   }
   selectPiece(className) {
     this.setState({ tile: className });

@@ -56,7 +56,7 @@ export default class Play extends Component {
       noRightWall,
       noUpWall
     } = this.state;
-
+    debugger;
     let currTile = "";
     if (
       (direction === "up" && row > 1) ||
@@ -119,7 +119,7 @@ export default class Play extends Component {
           if (noDownWall.includes(+newTile)) {
             maze[row - 1][column - 1].show = "";
             maze[row - 2][column - 1].show = <div className="dot" />;
-            this.setState({ maze: maze, row: row - 1 });
+            row--;
           }
         }
       } else if (direction === "left") {
@@ -127,7 +127,7 @@ export default class Play extends Component {
           if (noRightWall.includes(+newTile)) {
             maze[row - 1][column - 1].show = "";
             maze[row - 1][column - 2].show = <div className="dot" />;
-            this.setState({ maze: maze, column: column - 1 });
+            column--;
           }
         }
       } else if (direction === "right") {
@@ -135,7 +135,7 @@ export default class Play extends Component {
           if (noLeftWall.includes(+newTile)) {
             maze[row - 1][column - 1].show = "";
             maze[row - 1][column].show = <div className="dot" />;
-            this.setState({ maze: maze, column: column + 1 });
+            column++;
           }
         }
       } else if (direction === "down") {
@@ -143,12 +143,13 @@ export default class Play extends Component {
           if (noUpWall.includes(+newTile)) {
             maze[row - 1][column - 1].show = "";
             maze[row][column - 1].show = <div className="dot" />;
-            this.setState({ maze: maze, row: row + 1 });
+            row++;
           }
         }
       } else {
         console.log("I broke in dot moving logic");
       }
+      this.setState({ maze, row, column });
     } else if (
       (direction === "up" && row === 1) ||
       (direction === "left" && column === 1) ||
@@ -189,8 +190,8 @@ export default class Play extends Component {
   exitPlay() {
     let { maze, row, column } = this.state;
     maze[row - 1][column - 1].show = "";
-    this.setState({ maze });
-    this.props.pageHandler("home");
+    this.setState({ maze, row: 1, column: 1 });
+    this.props.pageHandler("viewAll");
   }
 
   render() {
