@@ -25,9 +25,11 @@ export default class Create extends Component {
   setPiece(row, column) {
     // changes a specific spot from the default div to a new one
     let { maze, tile } = this.state;
-    maze[row][column].tile = tile;
-    maze[row][column].show = "";
-    this.setState({ maze });
+    if (tile) {
+      maze[row][column].tile = tile;
+      maze[row][column].show = "";
+      this.setState({ maze });
+    }
   }
 
   makeGrid() {
@@ -68,7 +70,7 @@ export default class Create extends Component {
       maze
     };
     this.props.addMaze(object);
-    this.props.pageHandler("home");
+    this.props.searchMazes(name);
   }
   resetGrid() {
     this.setState({ maze: [] });
@@ -85,12 +87,13 @@ export default class Create extends Component {
               maze={this.state.maze}
               setPiece={this.setPiece}
               page={this.props.page}
+              name={this.state.name}
             />
           ) : (
             <div>
               {/* criteria for maze size is entered */}
               <p>There is a max of a 15/15 maze</p>
-              <p>All maezs start in the top left corner for now</p>
+              <p>All mazes start in the top left corner for now</p>
               <p>
                 Leave an opening somewhere in the outerwall of your maze to be
                 your finish

@@ -77,6 +77,7 @@ class App extends Component {
           updateMaze={this.updateMaze}
           deleteMaze={this.deleteMaze}
           loadMazes={this.loadMazes}
+          searchMazes={this.searchMazes}
         />
       </div>
     );

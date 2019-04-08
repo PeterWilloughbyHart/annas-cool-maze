@@ -23,17 +23,23 @@ export default class Header extends Component {
             <button onClick={() => this.props.searchMazes(this.state.name)}>
               search
             </button>
-            <button
+            {/* <button
               className="navButton"
               onClick={() => this.props.pageHandler("home")}
             >
               Home
-            </button>
+            </button> */}
             <button
               className="navButton"
               onClick={() => this.props.pageHandler("create")}
             >
               Create
+            </button>
+            <button
+              className="navButton"
+              onClick={() => this.props.pageHandler("viewAll")}
+            >
+              View All
             </button>
           </nav>
         )}

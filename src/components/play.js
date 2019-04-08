@@ -22,6 +22,28 @@ export default class Play extends Component {
     let { maze } = this.state;
     maze[0][0].show = <div className="dot" />;
     this.setState({ maze });
+    document.addEventListener("keydown", event => this.mapKeyDownEvent(event));
+  }
+
+  mapKeyDownEvent(e) {
+    let direction;
+    e.preventDefault();
+    switch (e.keyCode) {
+      case 37:
+        direction = "left";
+        break;
+      case 38:
+        direction = "up";
+        break;
+      case 39:
+        direction = "right";
+        break;
+      case 40:
+        direction = "down";
+        break;
+      default:
+    }
+    this.moveMarker(direction);
   }
 
   moveMarker(direction) {
@@ -34,6 +56,7 @@ export default class Play extends Component {
       noRightWall,
       noUpWall
     } = this.state;
+
     let currTile = "";
     if (
       (direction === "up" && row > 1) ||
@@ -174,7 +197,11 @@ export default class Play extends Component {
     return (
       <div className="play">
         <div className="playBox">
-          <Grid maze={this.props.element.maze} page={this.props.page} />
+          <Grid
+            maze={this.props.element.maze}
+            page={this.props.page}
+            element={this.props.element}
+          />
           <div className="playButtonBox">
             <button
               className="playButton"

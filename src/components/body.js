@@ -3,6 +3,7 @@ import Home from "./home";
 import Create from "./create";
 import Play from "./play";
 import Update from "./update";
+import ViewAll from "./viewall";
 
 export default class Body extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ export default class Body extends Component {
             mazes={this.props.mazes}
             pageHandler={this.props.pageHandler}
             page={this.props.page}
+            searchMazes={this.props.searchMazes}
           />
         ) : this.props.page === "update" ? (
           <Update
@@ -51,6 +53,12 @@ export default class Body extends Component {
             element={this.state.element}
             pageHandler={this.props.pageHandler}
             page={this.props.page}
+          />
+        ) : this.props.page === "viewAll" ? (
+          <ViewAll
+            searchMazes={this.props.searchMazes}
+            mazes={this.props.mazes}
+            loadMazes={this.props.loadMazes}
           />
         ) : (
           <p>Error! I'm broke</p>

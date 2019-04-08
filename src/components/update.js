@@ -37,9 +37,11 @@ export default class Update extends Component {
   setPiece(row, column) {
     // changes a specific spot from the default div to a new one
     let { maze, tile } = this.state;
-    maze[row][column].tile = tile;
-    maze[row][column].show = "";
-    this.setState({ maze });
+    if (tile) {
+      maze[row][column].tile = tile;
+      maze[row][column].show = "";
+      this.setState({ maze });
+    }
   }
 
   render() {
@@ -52,6 +54,7 @@ export default class Update extends Component {
             maze={this.props.element.maze}
             setPiece={this.setPiece}
             page={this.props.page}
+            element={this.props.element}
           />
 
           <button onClick={() => this.createMazeObject()}>Update</button>

@@ -4,11 +4,17 @@ import React, { Component } from "react";
 export default class Grid extends Component {
   render() {
     let display;
+    let mazeName;
     if (this.props.page === "create" || this.props.page === "update") {
-      display = this.props.maze.map((element, index) => {
+      if (this.props.page === "create") {
+        mazeName = this.props.name;
+      } else {
+        mazeName = this.props.element.name;
+      }
+      display = this.props.maze.map((array, index) => {
         return (
           <div key={index} className="row">
-            {element.map((element2, index2) => {
+            {array.map((element2, index2) => {
               return (
                 <div
                   onClick={() => this.props.setPiece(index, index2)}
@@ -23,10 +29,11 @@ export default class Grid extends Component {
         );
       });
     } else {
-      display = this.props.maze.map((element, index) => {
+      mazeName = this.props.element.name;
+      display = this.props.maze.map((array, index) => {
         return (
           <div key={index} className="row">
-            {element.map((element2, index2) => {
+            {array.map((element2, index2) => {
               return (
                 <div key={index2} className={element2.tile}>
                   {element2.show}
@@ -37,6 +44,11 @@ export default class Grid extends Component {
         );
       });
     }
-    return <div id="display_box">{display}</div>;
+    return (
+      <div className="display_box">
+        <p className="mazeName">Maze Name :{mazeName}</p>
+        {display}
+      </div>
+    );
   }
 }
