@@ -39,6 +39,8 @@ export default class Body extends Component {
             pageHandler={this.props.pageHandler}
             page={this.props.page}
             searchMazes={this.props.searchMazes}
+            increaseId={this.props.increaseId}
+            id={this.props.id}
           />
         ) : this.props.page === "update" ? (
           <Update

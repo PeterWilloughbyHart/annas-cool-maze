@@ -19,15 +19,13 @@ export default class Update extends Component {
     // creates an object to send in .post
     let { maze } = this.state;
     let object = {
+      id: this.props.element.id,
       name: this.props.element.name,
       rows: this.props.element.rows,
       columns: this.props.element.columns,
       maze
     };
-    let index = this.props.mazes.findIndex(
-      thing => thing === this.props.element
-    );
-    this.props.updateMaze(index, object);
+    this.props.updateMaze(this.props.element.id, object);
     this.props.pageHandler("viewAll");
   }
   selectPiece(className) {

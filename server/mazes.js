@@ -3,6 +3,7 @@ const app = express();
 
 let mazes = [
   {
+    id: 0,
     name: "Test",
     rows: 10,
     columns: 10,

@@ -64,11 +64,13 @@ export default class Create extends Component {
     // creates an object to send in .post
     let { name, rows, columns, maze } = this.state;
     let object = {
+      id: this.props.id,
       name,
       rows,
       columns,
       maze
     };
+    this.props.increaseId();
     this.props.addMaze(object);
     this.props.searchMazes(name);
   }

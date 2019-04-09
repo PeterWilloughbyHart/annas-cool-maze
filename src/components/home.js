@@ -33,7 +33,8 @@ export default class Home extends Component {
                 >
                   Play
                 </button>
-                <button onClick={() => this.props.deleteMaze(index)}>
+                {console.log(element.id)}
+                <button onClick={() => this.props.deleteMaze(element.id)}>
                   Delete
                 </button>
               </div>

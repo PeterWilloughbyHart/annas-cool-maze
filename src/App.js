@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       //page controlls the conditional rendering in the Body component
       page: "create",
-      mazes: []
+      mazes: [],
+      id: 1
     };
     this.pageHandler = this.pageHandler.bind(this);
     this.loadMazes = this.loadMazes.bind(this);
@@ -18,6 +19,7 @@ class App extends Component {
     this.deleteMaze = this.deleteMaze.bind(this);
     this.updateMaze = this.updateMaze.bind(this);
     this.searchMazes = this.searchMazes.bind(this);
+    this.increaseId = this.increaseId.bind(this);
   }
 
   pageHandler(page) {
@@ -37,15 +39,18 @@ class App extends Component {
       .then(res => this.setState({ mazes: res.data }))
       .catch(errors => console.log(errors));
   }
-  deleteMaze(index) {
+  deleteMaze(id) {
     axios
-      .delete("/api/mazes/" + index)
-      .then(res => this.setState({ mazes: res.data }))
+      .delete("/api/mazes/" + id)
+      .then(res => {
+        this.pageHandler("viewAll");
+        this.setState({ mazes: res.data });
+      })
       .catch(errors => console.log(errors));
   }
-  updateMaze(index, object) {
+  updateMaze(id, object) {
     axios
-      .put("/api/mazes/" + index, object)
+      .put("/api/mazes/" + id, object)
       .then(res => this.setState({ mazes: res.data }))
       .catch(errors => console.log(errors));
   }
@@ -60,6 +65,11 @@ class App extends Component {
   }
   componentDidMount() {
     this.loadMazes();
+  }
+  increaseId() {
+    let id = this.state.id;
+    id++;
+    this.setState({ id });
   }
   render() {
     return (
@@ -78,6 +88,8 @@ class App extends Component {
           deleteMaze={this.deleteMaze}
           loadMazes={this.loadMazes}
           searchMazes={this.searchMazes}
+          increaseId={this.increaseId}
+          id={this.state.id}
         />
       </div>
     );
